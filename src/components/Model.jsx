@@ -39,10 +39,10 @@ export default function Model({scrollProgress}) {
         image.current.scale.y = scaleY;
 
         //Adjust texture to new scale
-        const scaleRatio = scaleY / scaleX;
+        const scaleRatio = scaleX / scaleY;
         const aspectRatio = width / height
         //scale texture inside shader
-       image.current.material.uniforms.vUvScale.value.set(1, aspectRatio * scaleRatio)
+       image.current.material.uniforms.vUvScale.value.set(1, aspectRatio / scaleRatio)
 
         //animate wave based on progress of the scroll
         const modifiedAmplitude = transform(scrollProgress.get(), [0, 1], [amplitude, 0])
